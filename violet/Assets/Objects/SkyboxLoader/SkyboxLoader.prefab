@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7196170898979602399}
-  - component: {fileID: 1644182051775689784}
+  - component: {fileID: 5297870836439613624}
   m_Layer: 0
-  m_Name: SkyBoxManager
+  m_Name: SkyboxLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1644182051775689784
+--- !u!114 &5297870836439613624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,6 +41,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5952495263971962964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fc3ef1bc367c640b9a4a49745d93d2, type: 3}
+  m_Script: {fileID: 11500000, guid: b1b9f1b1a28454d46ae84f908a43394d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skyboxMaterials:
+  - {fileID: 2100000, guid: 314bc536dd960574ead031a605dc4608, type: 2}
+  - {fileID: 2100000, guid: e9ae57c38e640d642b7093291add5321, type: 2}
+  - {fileID: 2100000, guid: c9bec476aeb32594981cae7bdb9a3b28, type: 2}
+  - {fileID: 2100000, guid: 1b513f45f8332ec43831cf8029023ad3, type: 2}
+  - {fileID: 2100000, guid: b12d620b36b289245bd45762ae51661b, type: 2}
+  - {fileID: 2100000, guid: 3e0d27a5774136c42bd2ca458464dd00, type: 2}
+  - {fileID: 2100000, guid: 12523ea8ce541e24a8c7ee65ecfb2eeb, type: 2}
+  - {fileID: 2100000, guid: 4d27310e83b8c5044bc9c2a31e55e261, type: 2}
+  - {fileID: 2100000, guid: aa45d7fbd7423724f8657caf515fada4, type: 2}
+  - {fileID: 2100000, guid: aa553d846e40b4341824654216947167, type: 2}
+  - {fileID: 2100000, guid: 2ebb012eb7122c24b9b1d219de6c0a7f, type: 2}
+  - {fileID: 2100000, guid: d47ea2ffd0860f846b6e04140e83648a, type: 2}

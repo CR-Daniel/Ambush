@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Blackout : MonoBehaviour
 {
-    private bool fadeOnStart = true;
     public Color fadeColor;
     private Renderer rend;
 
@@ -14,35 +13,18 @@ public class Blackout : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
-
-        if (fadeOnStart)
-        {
-            StartCoroutine(FadeRoutine(1, 0, 1.0f));
-        }
     }
 
     private void HandleGameStateChange(GameState state)
     {
-        if (state == GameState.FadeOut)
+        if (state == GameState.Start)
         {
-            StartCoroutine(FadeOutRoutine(1.0f));
+            StartCoroutine(FadeRoutine(1, 0, 1.0f));
         }
-        else if (state == GameState.FadeIn)
+        else if (state == GameState.End)
         {
-            StartCoroutine(FadeInRoutine(1.0f));
+            StartCoroutine(FadeRoutine(0, 1, 1.0f));
         }
-    }
-
-    private IEnumerator FadeOutRoutine(float duration)
-    {
-        yield return StartCoroutine(FadeRoutine(0, 1, duration));
-        GameManager.Instance.UpdateGameState(GameState.Gameplay);
-    }
-
-    private IEnumerator FadeInRoutine(float duration)
-    {
-        yield return StartCoroutine(FadeRoutine(1, 0, duration));
-        GameManager.Instance.UpdateGameState(GameState.LoadEnvironment);
     }
 
     public IEnumerator FadeRoutine(float alphaIn, float alphaOut, float duration)

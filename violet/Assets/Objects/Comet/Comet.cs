@@ -7,12 +7,19 @@ public class Comet : MonoBehaviour
 {
     public event Action<CometHitEventArgs> OnHit;
     private bool isHitByRacket = false;
+    public float lifespan = 10f;
+
+    private void OnDestroy()
+    {
+        OnHit = null; // Remove all subscribers
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("String") && !isHitByRacket)
         {
             isHitByRacket = true;
+            Destroy(gameObject, lifespan);
             ProcessCollision(collision);
         }
         else if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Enemy"))

@@ -24,7 +24,7 @@ public class CometSpawner : MonoBehaviour
 
     private void HandleGameStateChange(GameState newState)
     {
-        if (newState == GameState.Gameplay)
+        if (newState == GameState.Play)
         {
             SpawnCometInRandomBox();
         }
@@ -35,7 +35,7 @@ public class CometSpawner : MonoBehaviour
         if (isFirstHit)
         {
             isFirstHit = false;
-            GameManager.Instance.UpdateGameState(GameState.FadeOut);
+            GameManager.Instance.UpdateGameState(GameState.Play);
         }
         else
         {
@@ -51,6 +51,7 @@ public class CometSpawner : MonoBehaviour
         Comet cometScript = comet.GetComponent<Comet>();
         if (cometScript != null) {
             cometScript.OnHit += HandleCometHit;
+            FindObjectOfType<ScoreBoard>().RegisterComet(cometScript);
         }
     }
 

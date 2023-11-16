@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.Start);
+        UpdateGameState(GameState.LoadSkybox);
     }
 
     public void UpdateGameState(GameState state)
@@ -29,11 +29,8 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    LoadSkybox,
     Start,
-    FadeOut,
-    LoadEnvironment,
-    LoadScoreboard,
-    FadeIn,
-    Gameplay,
-    EndState
+    Play,
+    End
 }
