@@ -35,7 +35,7 @@ public class CometSpawner : MonoBehaviour
         if (isFirstHit)
         {
             isFirstHit = false;
-            GameManager.Instance.UpdateGameState(GameState.GameStart);
+            GameManager.Instance.UpdateGameState(GameState.FadeOut);
         }
         else
         {

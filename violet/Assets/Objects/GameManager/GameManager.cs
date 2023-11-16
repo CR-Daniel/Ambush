@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.Init);
+        UpdateGameState(GameState.Start);
     }
 
     public void UpdateGameState(GameState state)
@@ -29,12 +29,11 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
-    Init,
-    GameStart,
-    FadeInView,
+    Start,
+    FadeOut,
     LoadEnvironment,
     LoadScoreboard,
-    FadeOutView,
+    FadeIn,
     Gameplay,
     EndState
 }
