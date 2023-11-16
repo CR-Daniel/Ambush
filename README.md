@@ -1,5 +1,9 @@
 # UML Diagrams
 
+## State Machine Diagram
+
+![Alt text](diagrams/state.svg)
+
 ## Class Diagram
 
 ![Alt text](diagrams/class.svg)
