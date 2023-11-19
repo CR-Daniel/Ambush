@@ -6,9 +6,8 @@ public class CometSpawner : MonoBehaviour
 {
     public GameObject cometPrefab;
     public Transform initialSpawnPoint;
-    public Transform leftBoxCenter;
-    public Transform rightBoxCenter;
-    public Vector3 boxSize;
+    public Transform leftReferencePoint;
+    public Transform rightReferencePoint;
     private bool isFirstHit = true;
     private bool canSpawnNextComet = true;
 
@@ -26,7 +25,7 @@ public class CometSpawner : MonoBehaviour
     {
         if (newState == GameState.Play)
         {
-            SpawnCometInRandomBox();
+            SpawnCometAtReferencePoint();
         }
     }
 
@@ -41,7 +40,7 @@ public class CometSpawner : MonoBehaviour
         {
             // Allow spawning the next comet
             canSpawnNextComet = true;
-            SpawnCometInRandomBox();
+            StartCoroutine(SpawnCometAfterDelay());
         }
     }
 
@@ -55,24 +54,24 @@ public class CometSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnCometInRandomBox()
+    private IEnumerator SpawnCometAfterDelay()
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+        
+        // Spawn the next comet
+        canSpawnNextComet = true;
+        SpawnCometAtReferencePoint();
+    }
+
+    private void SpawnCometAtReferencePoint()
     {
         if (canSpawnNextComet)
         {
             canSpawnNextComet = false;
-            Transform boxTransform = Random.Range(0, 2) == 0 ? leftBoxCenter : rightBoxCenter;
-            Vector3 spawnPosition = GetRandomPositionInBox(boxTransform);
-            SpawnComet(spawnPosition);
+            Transform referencePoint = Random.Range(0, 2) == 0 ? leftReferencePoint : rightReferencePoint;
+            SpawnComet(referencePoint.position);
         }
-    }
-
-    private Vector3 GetRandomPositionInBox(Transform boxTransform)
-    {
-        // Calculate random position within the box
-        float x = Random.Range(boxTransform.position.x - boxSize.x / 2, boxTransform.position.x + boxSize.x / 2);
-        float y = Random.Range(boxTransform.position.y - boxSize.y / 2, boxTransform.position.y + boxSize.y / 2);
-        float z = Random.Range(boxTransform.position.z - boxSize.z / 2, boxTransform.position.z + boxSize.z / 2);
-        return new Vector3(x, y, z);
     }
     
     private void OnDrawGizmos()
@@ -83,13 +82,13 @@ public class CometSpawner : MonoBehaviour
             Gizmos.DrawSphere(initialSpawnPoint.position, 0.1f);
         }
         
-        // Draw left and right boxes in the editor
+        // Draw left and right reference points in the editor
         Gizmos.color = Color.blue;
-        if (leftBoxCenter != null) {
-            Gizmos.DrawWireCube(leftBoxCenter.position, boxSize);
+        if (leftReferencePoint != null) {
+            Gizmos.DrawSphere(leftReferencePoint.position, 0.1f);
         }
-        if (rightBoxCenter != null) {
-            Gizmos.DrawWireCube(rightBoxCenter.position, boxSize);
+        if (rightReferencePoint != null) {
+            Gizmos.DrawSphere(rightReferencePoint.position, 0.1f);
         }
     }
 }

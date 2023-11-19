@@ -7,13 +7,8 @@ public class Blackout : MonoBehaviour
     public Color fadeColor;
     private Renderer rend;
 
-    private void Awake() { GameManager.OnGameStateChange += HandleGameStateChange; }
+    private void Awake() { rend = GetComponent<Renderer>(); GameManager.OnGameStateChange += HandleGameStateChange; }
     private void OnDestroy() { GameManager.OnGameStateChange -= HandleGameStateChange; }
-
-    void Start()
-    {
-        rend = GetComponent<Renderer>();
-    }
 
     private void HandleGameStateChange(GameState state)
     {

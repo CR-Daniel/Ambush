@@ -48,10 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cometPrefab: {fileID: 0}
-  initialSpawnPoint: {fileID: 0}
-  leftBoxCenter: {fileID: 0}
-  rightBoxCenter: {fileID: 0}
-  boxSize: {x: 0, y: 0, z: 0}
+  initialSpawnPoint: {fileID: 4318048710344763276}
+  leftReferencePoint: {fileID: 4543996562540964047}
+  rightReferencePoint: {fileID: 1881482697460252717}
 --- !u!1 &1193420173522867349
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4543996562540964047}
   m_Layer: 0
-  m_Name: LeftBoxCenter
+  m_Name: LeftRef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881482697460252717}
   m_Layer: 0
-  m_Name: RightBoxCenter
+  m_Name: RightRef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
