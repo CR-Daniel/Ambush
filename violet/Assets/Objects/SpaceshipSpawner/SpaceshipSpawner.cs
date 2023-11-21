@@ -38,7 +38,7 @@ public class SpaceshipSpawner : MonoBehaviour
         while (true) // Infinite loop, will be stopped when coroutine is stopped
         {
             SpawnEnemies();
-            yield return new WaitForSeconds(3f); // Wait for 5 seconds before spawning again
+            yield return new WaitForSeconds(4f); // Wait for 5 seconds before spawning again
         }
     }
 
