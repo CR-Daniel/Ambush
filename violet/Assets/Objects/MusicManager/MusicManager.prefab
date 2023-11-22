@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ac0bb19f0e2feb48809d23dfd5d62a0, type: 3}
   - {fileID: 8300000, guid: 408c0de591775c542ae01d2ab88e6c4d, type: 3}
   rightPrimaryButton: {fileID: 4499665813392958659, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightSecondaryButton: {fileID: -6510910962657491108, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftSecondaryButton: {fileID: 5680726859609939997, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftPrimaryButton: {fileID: -4636409749526019710, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!82 &2305997160768058369

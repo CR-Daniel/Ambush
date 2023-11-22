@@ -146,4 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7221e5092681234398ece5b34954399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onCometHitRacket: {fileID: 11400000, guid: a278cf96c2c0f224b8a3263f417e8a9b, type: 2}
+  onCometHitEnemy: {fileID: 11400000, guid: b5b470262816c4c4e80c70748c20ca30, type: 2}
   lifespan: 10

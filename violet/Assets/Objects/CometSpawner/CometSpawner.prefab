@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5488062694641807907}
   - component: {fileID: 6620415893037090858}
+  - component: {fileID: 3856843133748450709}
   m_Layer: 0
   m_Name: CometSpawner
   m_TagString: Untagged
@@ -47,10 +48,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6588e5a9b85959f488ea9bb846285191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cometPrefab: {fileID: 0}
+  cometPrefab: {fileID: 5633019719839376598, guid: f7b65c140f8d03140a783c8ae5d8ad22, type: 3}
   initialSpawnPoint: {fileID: 4318048710344763276}
   leftReferencePoint: {fileID: 4543996562540964047}
   rightReferencePoint: {fileID: 1881482697460252717}
+--- !u!114 &3856843133748450709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820215514643479999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbd596ec05d9c34bae8c93441efc965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a278cf96c2c0f224b8a3263f417e8a9b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6620415893037090858}
+        m_TargetAssemblyTypeName: CometSpawner, Assembly-CSharp
+        m_MethodName: HandleCometHitRacket
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1193420173522867349
 GameObject:
   m_ObjectHideFlags: 0

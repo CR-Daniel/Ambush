@@ -29,7 +29,7 @@ public class CometSpawner : MonoBehaviour
         }
     }
 
-    private void HandleCometHit(CometHitEventArgs args)
+    public void HandleCometHitRacket()
     {
         if (isFirstHit)
         {
@@ -47,11 +47,6 @@ public class CometSpawner : MonoBehaviour
     private void SpawnComet(Vector3 position)
     {
         GameObject comet = Instantiate(cometPrefab, position, Quaternion.identity);
-        Comet cometScript = comet.GetComponent<Comet>();
-        if (cometScript != null) {
-            cometScript.OnHit += HandleCometHit;
-            FindObjectOfType<ScoreBoard>().RegisterComet(cometScript);
-        }
     }
 
     private IEnumerator SpawnCometAfterDelay()

@@ -37,26 +37,18 @@ public class ScoreBoard : MonoBehaviour
         OnSpeedAdjustment?.Invoke(newSpeed);
     }
 
-    public void RegisterComet(Comet comet)
+    public void HandleCometHitEnemy()
     {
-        comet.OnHit += HandleCometHit;
-    }
+        hitTimestamps.Enqueue(Time.time);
+        currentScore++;
+        scoreText.text = currentScore.ToString();
 
-    private void HandleCometHit(CometHitEventArgs args)
-    {
-        if (args.HitObject.CompareTag("Enemy"))
+        // Check and update high score
+        if (currentScore > highScore)
         {
-            hitTimestamps.Enqueue(Time.time);
-            currentScore++;
-            scoreText.text = currentScore.ToString();
-
-            // Check and update high score
-            if (currentScore > highScore)
-            {
-                highScore = currentScore;
-                highScoreText.text = highScore.ToString();
-                PlayerPrefs.SetInt("HighScore", highScore);
-            }
+            highScore = currentScore;
+            highScoreText.text = highScore.ToString();
+            PlayerPrefs.SetInt("HighScore", highScore);
         }
     }
 }

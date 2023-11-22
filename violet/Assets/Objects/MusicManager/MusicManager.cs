@@ -17,6 +17,7 @@ public class MusicManager : MonoBehaviour
 
     // Reference to the default input actions
     public InputActionReference rightPrimaryButton;
+    public InputActionReference rightSecondaryButton;
     public InputActionReference leftSecondaryButton;
     public InputActionReference leftPrimaryButton;
 
@@ -31,11 +32,13 @@ public class MusicManager : MonoBehaviour
 
             // Add listeners to the input actions
             rightPrimaryButton.action.performed += _ => SkipTrack();
+            rightSecondaryButton.action.performed += _ => Restart();
             leftSecondaryButton.action.performed += _ => AdjustVolume(volumeChangeStep);
             leftPrimaryButton.action.performed += _ => AdjustVolume(-volumeChangeStep);
 
             // Enable the input actions
             rightPrimaryButton.action.Enable();
+            rightSecondaryButton.action.Enable();
             leftSecondaryButton.action.Enable();
             leftPrimaryButton.action.Enable();
         }
@@ -74,6 +77,11 @@ public class MusicManager : MonoBehaviour
         int randomIndex = Random.Range(0, tracks.Length);
         audioSource.clip = tracks[randomIndex];
         audioSource.Play();
+    }
+
+    void Restart()
+    {
+        GameManager.Instance.UpdateGameState(GameState.End);
     }
 
     void SkipTrack()

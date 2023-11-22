@@ -5,38 +5,46 @@ using UnityEngine;
 
 public class Comet : MonoBehaviour
 {
-    public event Action<CometHitEventArgs> OnHit;
+    public GameEvent onCometHitRacket;
+    public GameEvent onCometHitEnemy;
     private bool isHitByRacket = false;
     public float lifespan = 10f;
 
-    private void OnDestroy()
+    private void OnTriggerEnter(Collider other)
     {
-        OnHit = null; // Remove all subscribers
+        if (other.CompareTag("String") && !isHitByRacket)
+        {
+            isHitByRacket = true;
+            // enable fire vfx?
+            // haptic feedback
+            // sfx
+            AdjustCometVelocity(other);
+            Destroy(gameObject, lifespan);
+            onCometHitRacket.Raise();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("String") && !isHitByRacket)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            isHitByRacket = true;
-            Destroy(gameObject, lifespan);
-            ProcessCollision(collision);
-        }
-        else if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Enemy"))
-        {
-            ProcessCollision(collision);
+            // instance explosion
+            // haptic feedback
+            // sfx
+            onCometHitEnemy.Raise();
+            Destroy(gameObject);
         }
     }
 
-    private void ProcessCollision(Collision collision)
+    private void AdjustCometVelocity(Collider collider)
     {
-        // Determine the hit object, strength, and location
-        GameObject hitObject = collision.gameObject;
-        float hitStrength = collision.relativeVelocity.magnitude;
-        Vector3 hitLocation = collision.contacts[0].point;
+        RacketStringFollower racketFollower = collider.GetComponent<RacketStringFollower>();
+        if (racketFollower != null)
+        {
+            Vector3 averageVelocity = racketFollower.GetAverageVelocity();
 
-        // Trigger the event with the detailed information
-        CometHitEventArgs args = new CometHitEventArgs(hitObject, hitStrength, hitLocation);
-        OnHit?.Invoke(args);
+            Rigidbody cometRigidbody = GetComponent<Rigidbody>();
+            cometRigidbody.velocity = averageVelocity * 2.0f;
+        }
     }
 }
