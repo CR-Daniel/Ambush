@@ -7,6 +7,7 @@ public class Comet : MonoBehaviour
 {
     public GameEvent onCometHitRacket;
     public GameEvent onCometHitEnemy;
+    public GameObject vfxPrefab;
     private bool isHitByRacket = false;
     public float lifespan = 10f;
 
@@ -16,7 +17,7 @@ public class Comet : MonoBehaviour
         {
             isHitByRacket = true;
             // enable fire vfx?
-            // haptic feedback
+            // haptic feedback (event)
             // sfx
             AdjustCometVelocity(other);
             Destroy(gameObject, lifespan);
@@ -28,12 +29,24 @@ public class Comet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // instance explosion
-            // haptic feedback
+            // Get the position of the first contact point
+            Vector3 impactPosition = collision.contacts[0].point;
+            SpawnVFX(impactPosition);
+
+            // haptic feedback (event)
             // sfx
             onCometHitEnemy.Raise();
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnVFX(Vector3 position)
+    {
+        // Create a random rotation
+        Quaternion randomRotation = Quaternion.Euler(UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360));
+
+        // Instantiate the VFX prefab at the given position with the random rotation
+        Instantiate(vfxPrefab, position, randomRotation);
     }
 
     private void AdjustCometVelocity(Collider collider)

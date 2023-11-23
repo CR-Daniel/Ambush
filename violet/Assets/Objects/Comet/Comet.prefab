@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onCometHitRacket: {fileID: 11400000, guid: a278cf96c2c0f224b8a3263f417e8a9b, type: 2}
   onCometHitEnemy: {fileID: 11400000, guid: b5b470262816c4c4e80c70748c20ca30, type: 2}
+  vfxPrefab: {fileID: 7872432403857474107, guid: 70daf9d40af3a1b4ebee0282bb15608f, type: 3}
   lifespan: 10
