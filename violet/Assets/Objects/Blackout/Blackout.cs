@@ -19,6 +19,7 @@ public class Blackout : MonoBehaviour
         }
         else if (state == GameState.End)
         {
+            Time.timeScale = 0.5f;
             StartCoroutine(FadeRoutine(0, 1, 1.0f, true));
         }
     }
