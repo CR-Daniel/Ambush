@@ -775,7 +775,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.4641e-41, w: 1.6114618e-38}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.066e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1482,6 +1482,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2058203634}
     m_Modifications:
+    - target: {fileID: 112681899991574244, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 793603555676313506, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986559914847524512, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394910704788278349, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4629095711934927472, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1525,6 +1541,18 @@ PrefabInstance:
     - target: {fileID: 7232128788195921052, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
       propertyPath: m_Name
       value: Racket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420048167989355863, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454918193750190558, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716653206322922090, guid: f4c952f5988e57b4b83465180c02ae98, type: 3}
+      propertyPath: isLeftRacket
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,8 @@ TagManager:
   - String
   - Enemy
   - Shield
+  - LeftRacket
+  - RightRacket
   layers:
   - Default
   - TransparentFX

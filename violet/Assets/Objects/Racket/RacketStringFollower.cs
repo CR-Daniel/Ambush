@@ -12,14 +12,16 @@ public class RacketStringFollower : MonoBehaviour
 	private int _velocityHistoryLength = 5; // Number of frames to average
 
 	[SerializeField] private float _sensitivity = 100f;
-    [SerializeField] private AudioClip hitSound;
-    private AudioSource audioSource;
 
 	private void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
 	}
+
+	public void SetRacketSide(bool isLeftRacket)
+    {
+        this.tag = isLeftRacket ? "LeftRacket" : "RightRacket";
+    }
 
 	private void FixedUpdate()
 	{

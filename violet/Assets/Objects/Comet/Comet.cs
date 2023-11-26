@@ -22,7 +22,7 @@ public class Comet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("String") && !isHitByRacket)
+        if (!isHitByRacket)
         {
             isHitByRacket = true;
 
@@ -35,8 +35,14 @@ public class Comet : MonoBehaviour
             // dynamic sfx
             PlaySoundEffect(hitRacketSound, Mathf.Clamp(cometRigidbody.velocity.magnitude / 40f, 0.01f, 0.1f));
 
-            // Send haptic feedback to the right hand controller
-            SendHapticFeedback(XRNode.RightHand, hitIntensity, 0.3f);
+            if (other.CompareTag("LeftRacket"))
+            {
+                SendHapticFeedback(XRNode.LeftHand, hitIntensity, 0.3f);
+            }
+            else if (other.CompareTag("RightRacket"))
+            {
+                SendHapticFeedback(XRNode.RightHand, hitIntensity, 0.3f);
+            }
 
             Destroy(gameObject, lifespan);
             onCometHitRacket.Raise();
