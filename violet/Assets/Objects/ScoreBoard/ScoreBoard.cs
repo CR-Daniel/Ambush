@@ -9,10 +9,14 @@ public class ScoreBoard : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI timerText;
 
+    public AudioClip gameOverSound;
+    private AudioSource audioSource;
+
     private bool startTimer = false;
     private int currentScore = 0;
     private int highScore = 0;
-    private float timer = 100f;
+    private float timer = 10f;
+    private bool gameOver = false;
 
     public delegate void SpeedAdjustmentHandler(float newSpeed);
     public static event SpeedAdjustmentHandler OnSpeedAdjustment;
@@ -22,7 +26,10 @@ public class ScoreBoard : MonoBehaviour
     private float baseSpeed = 4f;
     private float speedIncreasePerHit = 1f; // Increase in speed per hit
 
-    private void Awake() { GameManager.OnGameStateChange += HandleGameStateChange; }
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+        GameManager.OnGameStateChange += HandleGameStateChange;
+    }
     private void OnDestroy() { GameManager.OnGameStateChange -= HandleGameStateChange; }
 
     private void HandleGameStateChange(GameState newState)
@@ -44,12 +51,14 @@ public class ScoreBoard : MonoBehaviour
 
     private void Update()
     {
-        if (!startTimer) return;
+        if (!startTimer || gameOver) return;
 
         if (timer > 0) {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F0");  // Update timer text
         } else {
+            gameOver = true;
+            audioSource.PlayOneShot(gameOverSound);
             GameManager.Instance.UpdateGameState(GameState.End);
         }
 

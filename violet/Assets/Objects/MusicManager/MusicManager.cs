@@ -14,6 +14,8 @@ public class MusicManager : MonoBehaviour
     private float volumeChangeStep = 0.1f;
     private float maxVolume = 1.0f;
     private float minVolume = 0.0f;
+    private float previousVolume = 0.5f;
+    private float fadeDuration = 1.5f;
 
     // Reference to the default input actions
     public InputActionReference rightPrimaryButton;
@@ -21,11 +23,49 @@ public class MusicManager : MonoBehaviour
     public InputActionReference leftSecondaryButton;
     public InputActionReference leftPrimaryButton;
 
+    private void HandleGameStateChange(GameState state)
+    {
+        if (state == GameState.Start)
+        {
+            StartCoroutine(FadeIn(fadeDuration));
+        }
+        else if (state == GameState.End)
+        {
+            previousVolume = audioSource.volume;
+            StartCoroutine(FadeOut(fadeDuration));
+        }
+    }
+
+    IEnumerator FadeIn(float duration)
+    {
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(0, previousVolume, currentTime / duration);
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOut(float duration)
+    {
+        float startVolume = audioSource.volume;
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0, currentTime / duration);
+            yield return null;
+        }
+    }
+
     void Awake()
     {
         // Singleton pattern to ensure only one instance exists
         if (instance == null)
         {
+            GameManager.OnGameStateChange += HandleGameStateChange;
+
             instance = this;
             DontDestroyOnLoad(gameObject); // Don't destroy this object when loading new scenes
             audioSource = GetComponent<AudioSource>();
@@ -50,6 +90,8 @@ public class MusicManager : MonoBehaviour
 
     void OnDestroy()
     {
+        GameManager.OnGameStateChange -= HandleGameStateChange;
+
         // Disable the input actions and remove listeners
         rightPrimaryButton.action.Disable();
         leftSecondaryButton.action.Disable();
