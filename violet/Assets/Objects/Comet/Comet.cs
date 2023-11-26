@@ -9,8 +9,16 @@ public class Comet : MonoBehaviour
     public GameEvent onCometHitRacket;
     public GameEvent onCometHitEnemy;
     public GameObject vfxPrefab;
+    public AudioClip hitRacketSound;
+    public AudioClip hitEnemySound;
+    private AudioSource audioSource;
     private bool isHitByRacket = false;
     public float lifespan = 10f;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,12 +28,12 @@ public class Comet : MonoBehaviour
 
             AdjustCometVelocity(other);
 
-            // sfx
-
             // Calculate haptic feedback intensity based on hit speed
             Rigidbody cometRigidbody = GetComponent<Rigidbody>();
-            Debug.Log(cometRigidbody.velocity.magnitude);
             float hitIntensity = Mathf.Clamp(cometRigidbody.velocity.magnitude / 40f, 0f, 1f);
+
+            // dynamic sfx
+            PlaySoundEffect(hitRacketSound, Mathf.Clamp(cometRigidbody.velocity.magnitude / 40f, 0.01f, 0.1f));
 
             // Send haptic feedback to the right hand controller
             SendHapticFeedback(XRNode.RightHand, hitIntensity, 0.3f);
@@ -47,9 +55,12 @@ public class Comet : MonoBehaviour
             SendHapticFeedback(XRNode.RightHand, 0.3f, 0.3f);
             SendHapticFeedback(XRNode.LeftHand, 0.3f, 0.3f);
 
-            // sfx
             onCometHitEnemy.Raise();
-            Destroy(gameObject);
+
+            PlaySoundEffect(hitEnemySound, 0.75f);
+            GetComponent<Collider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject, 0.5f);
         }
     }
 
@@ -80,6 +91,16 @@ public class Comet : MonoBehaviour
         if (hapticDevice.isValid)
         {
             hapticDevice.SendHapticImpulse(0, intensity, duration);
+        }
+    }
+
+    private void PlaySoundEffect(AudioClip clip, float volume)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f); // Vary pitch slightly
+            audioSource.volume = volume; // Set volume based on hit intensity
+            audioSource.PlayOneShot(clip);
         }
     }
 }
