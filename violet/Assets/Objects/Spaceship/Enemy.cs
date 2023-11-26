@@ -19,6 +19,10 @@ public class Enemy : MonoBehaviour
         transform.localScale = Vector3.zero; // Set scale to 0 when enabled
         StartCoroutine(ScaleUp());
 
+        // Restart the movement and lifecycle coroutines
+        StartCoroutine(MoveForward());
+        StartCoroutine(ScaleDownAndDestroy());
+
         // Subscribe to the speed adjustment event
         ScoreBoard.OnSpeedAdjustment += HandleSpeedAdjustment;
     }
@@ -44,12 +48,6 @@ public class Enemy : MonoBehaviour
     private void HandleSpeedAdjustment(float newSpeed)
     {
         moveSpeed = newSpeed;
-    }
-
-    void Start()
-    {
-        StartCoroutine(MoveForward());
-        StartCoroutine(ScaleDownAndDestroy());
     }
 
     private IEnumerator MoveForward()
