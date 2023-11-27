@@ -1,19 +1,5 @@
-# UML Diagrams
+# Sequence Diagrams
 
-## State Machine Diagram
+![Alt text](diagrams/seq.svg)
 
-![Alt text](diagrams/state.svg)
-
-## Class Diagram
-
-![Alt text](diagrams/class.svg)
-
-## Sequence Diagrams
-
-### Game Initialization and Difficulty Selection
-
-![Alt text](diagrams/seq_1.svg)
-
-### In-Game Control and State Transitions
-
-![Alt text](diagrams/seq_2.svg)
+![Alt text](diagrams/seq2.svg)
