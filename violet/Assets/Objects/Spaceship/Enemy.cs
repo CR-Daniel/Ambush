@@ -6,12 +6,11 @@ public class Enemy : MonoBehaviour
 {
     private float moveSpeed = 4f;
     private float lifetime = 8f;
-    public string poolTag;
-    private Vector3 originalScale; // Store the original scale
+    private Vector3 originalScale;
 
     void Awake()
     {
-        originalScale = transform.localScale; // Capture the original scale on Awake
+        originalScale = transform.localScale;
     }
 
     void OnEnable()
@@ -89,6 +88,6 @@ public class Enemy : MonoBehaviour
 
     private void ReturnToPool()
     {
-        PoolManager.Instance.ReturnToPool(poolTag, gameObject);
+        PoolManager.Instance.ReturnToPool(gameObject);
     }
 }

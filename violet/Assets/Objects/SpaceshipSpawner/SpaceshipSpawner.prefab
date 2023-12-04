@@ -50,16 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - point: {fileID: 8309766961192557331}
-    enemyPoolTag: Falcon
-  - point: {fileID: 8877267971236869385}
-    enemyPoolTag: Falcon
-  - point: {fileID: 9173664101186410220}
-    enemyPoolTag: Toad
-  - point: {fileID: 6604282897173685872}
-    enemyPoolTag: Toad
-  - point: {fileID: 6872657010722549929}
-    enemyPoolTag: Toad
+  - {fileID: 8309766961192557331}
+  - {fileID: 8877267971236869385}
+  - {fileID: 9173664101186410220}
+  - {fileID: 6604282897173685872}
+  - {fileID: 6872657010722549929}
+  avoidLastNSpawns: 3
 --- !u!1 &3703877510111370207
 GameObject:
   m_ObjectHideFlags: 0

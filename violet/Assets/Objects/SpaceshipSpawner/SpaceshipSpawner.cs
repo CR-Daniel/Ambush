@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class SpaceshipSpawner : MonoBehaviour
 {
-    [System.Serializable]
-    public class SpawnPoint
-    {
-        public Transform point;
-        public string enemyPoolTag;
+    public Transform[] spawnPoints;
+    private Coroutine spawnCoroutine;
+    public int avoidLastNSpawns = 3;
+    private Queue<int> recentSpawnIndices;
+
+
+    private void Awake() {
+        GameManager.OnGameStateChange += HandleGameStateChange;
+        recentSpawnIndices = new Queue<int>();
     }
 
-    public SpawnPoint[] spawnPoints;
-    private Coroutine spawnCoroutine;
-
-
-    private void Awake() { GameManager.OnGameStateChange += HandleGameStateChange; }
     private void OnDestroy() { GameManager.OnGameStateChange -= HandleGameStateChange; }
 
     private void HandleGameStateChange(GameState newState)
@@ -35,32 +34,44 @@ public class SpaceshipSpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesRegularly()
     {
-        while (true) // Infinite loop, will be stopped when coroutine is stopped
+        while (true)
         {
-            SpawnEnemies();
-            yield return new WaitForSeconds(4f); // Wait for 5 seconds before spawning again
+            SpawnRandomEnemy();
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
-
-    public void SpawnEnemies()
+    private void SpawnRandomEnemy()
     {
-        foreach (var spawnPoint in spawnPoints)
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+
+        // Ensure we don't spawn at the same point as the last N spawns
+        while (recentSpawnIndices.Contains(spawnIndex))
         {
-            PoolManager.Instance.SpawnFromPool(spawnPoint.enemyPoolTag, spawnPoint.point.position, spawnPoint.point.rotation);
+            spawnIndex = Random.Range(0, spawnPoints.Length);
         }
+
+        // Update recent spawn indices
+        recentSpawnIndices.Enqueue(spawnIndex);
+        if (recentSpawnIndices.Count > avoidLastNSpawns)
+        {
+            recentSpawnIndices.Dequeue();
+        }
+
+        // Spawn the enemy at the chosen point
+        PoolManager.Instance.SpawnRandomEnemy(spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
     }
 
     void OnDrawGizmos()
     {
         if (spawnPoints == null) return;
 
-        foreach (var spawnPoint in spawnPoints)
+        foreach (var point in spawnPoints)
         {
-            if (spawnPoint.point != null)
+            if (point != null)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(spawnPoint.point.position, 2f);
+                Gizmos.DrawSphere(point.position, 2f);
             }
         }
     }

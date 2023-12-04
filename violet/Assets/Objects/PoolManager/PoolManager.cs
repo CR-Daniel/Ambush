@@ -4,67 +4,66 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class EnemyPool
-    {
-        public string tag;
-        public GameObject prefab;
-        public int size;
-    }
-
     public static PoolManager Instance;
 
-    public List<EnemyPool> pools;
-    private Dictionary<string, Queue<GameObject>> poolDictionary;
+    public GameObject[] enemyPrefabs;
+    public int poolSizePerType = 5;
+
+    private List<GameObject> enemyList;
 
     private void Awake()
     {
         Instance = this;
 
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        enemyList = new List<GameObject>();
 
-        foreach (EnemyPool pool in pools)
+        foreach (GameObject prefab in enemyPrefabs)
         {
-            Queue<GameObject> enemyQueue = new Queue<GameObject>();
-
-            for (int i = 0; i < pool.size; i++)
+            for (int i = 0; i < poolSizePerType; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(prefab);
                 obj.SetActive(false);
-                enemyQueue.Enqueue(obj);
+                enemyList.Add(obj);
             }
+        }
 
-            poolDictionary.Add(pool.tag, enemyQueue);
+        // Shuffle the list for more randomness
+        ShuffleEnemyList();
+    }
+
+    private void ShuffleEnemyList()
+    {
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            GameObject temp = enemyList[i];
+            int randomIndex = Random.Range(i, enemyList.Count);
+            enemyList[i] = enemyList[randomIndex];
+            enemyList[randomIndex] = temp;
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnRandomEnemy(Vector3 position, Quaternion rotation)
     {
-        if (!poolDictionary.ContainsKey(tag))
+        if (enemyList.Count == 0)
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            Debug.LogWarning("No enemies available in the pool.");
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        int randomIndex = Random.Range(0, enemyList.Count);
+        GameObject objectToSpawn = enemyList[randomIndex];
+        enemyList.RemoveAt(randomIndex);
+
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
     }
 
-    public void ReturnToPool(string tag, GameObject objectToReturn)
+    public void ReturnToPool(GameObject objectToReturn)
     {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return;
-        }
-
         objectToReturn.SetActive(false);
-        poolDictionary[tag].Enqueue(objectToReturn);
+        enemyList.Add(objectToReturn);
     }
 }

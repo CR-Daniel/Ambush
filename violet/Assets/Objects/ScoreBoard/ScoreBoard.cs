@@ -15,7 +15,7 @@ public class ScoreBoard : MonoBehaviour
     private bool startTimer = false;
     private int currentScore = 0;
     private int highScore = 0;
-    private float timer = 10f;
+    private float timer = 100f;
     private bool gameOver = false;
 
     public delegate void SpeedAdjustmentHandler(float newSpeed);
