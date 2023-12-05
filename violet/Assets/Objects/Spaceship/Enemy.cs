@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private float moveSpeed = 4f;
-    private float lifetime = 8f;
+    private float moveSpeed = 6f;
+    private float lifetime = 15f;
     private Vector3 originalScale;
 
     void Awake()

@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.05
@@ -637,7 +637,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.32e-43, y: 4.4075733e+31, z: 4.32e-43, w: 2.0012887e+31}
+  m_BoundingSphereOverride: {x: 0, y: 1.8293631e-37, z: 4.070149e-37, w: 9.213561e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1183,15 +1183,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1199,11 +1199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1219,7 +1219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7159377521791503848, guid: 76e4411bc6548ef49b6609070fa897d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

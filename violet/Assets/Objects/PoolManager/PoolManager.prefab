@@ -51,4 +51,4 @@ MonoBehaviour:
   - {fileID: 4360040313412160615, guid: 0ab3b7814258b934e8fa56b5dfd41482, type: 3}
   - {fileID: 2314339614124668535, guid: b586882fa9ba4ef4e9edb4a9061d8d0f, type: 3}
   - {fileID: 2015767234381114834, guid: 4491ae5b9c13a7140b11b1565ebc5362, type: 3}
-  poolSizePerType: 5
+  poolSizePerType: 10
