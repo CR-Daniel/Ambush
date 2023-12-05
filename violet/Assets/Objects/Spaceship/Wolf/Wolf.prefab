@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc86753174880478db7d13cb5d577f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolTag: Wolf
 --- !u!1001 &289738930850845496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.97
+      value: -4.3470006
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalRotation.w
@@ -243,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.97
+      value: -4.3470006
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalRotation.w
@@ -333,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.983
+      value: -7.36
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalRotation.w
@@ -423,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.983
+      value: -7.36
       objectReference: {fileID: 0}
     - target: {fileID: 159580369973528141, guid: 9447c8118f601cb4ea6c55ec53cc5709, type: 3}
       propertyPath: m_LocalRotation.w

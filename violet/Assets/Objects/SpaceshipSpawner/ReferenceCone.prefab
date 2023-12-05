@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2568902782527280000
 Transform:
   m_ObjectHideFlags: 0
@@ -207,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 8936265911460411326, guid: 8076ed98b9a942d449106b1d7052e013, type: 3}
       propertyPath: m_Name
       value: Panther
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936265911460411326, guid: 8076ed98b9a942d449106b1d7052e013, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
