@@ -6,8 +6,9 @@ public class CometSpawner : MonoBehaviour
 {
     public GameObject cometPrefab;
     public Transform initialSpawnPoint;
-    public Transform leftReferencePoint;
-    public Transform rightReferencePoint;
+    public List<Transform> spawnPoints;
+    public int numberOfComets = 1;
+    private List<GameObject> activeComets = new List<GameObject>();
     private bool isFirstHit = true;
     private bool canSpawnNextComet = true;
 
@@ -17,7 +18,7 @@ public class CometSpawner : MonoBehaviour
     private void Start()
     {
         if (initialSpawnPoint != null) {
-            SpawnComet(initialSpawnPoint.position);
+            SpawnComets(initialSpawnPoint.position, 1);
         }
     }
 
@@ -25,11 +26,11 @@ public class CometSpawner : MonoBehaviour
     {
         if (newState == GameState.Play)
         {
-            SpawnCometAtReferencePoint();
+            SpawnCometsRandomly();
         }
     }
 
-    public void HandleCometHitRacket()
+    public void HandleCometHitRacket(Component sender, object data)
     {
         if (isFirstHit)
         {
@@ -38,52 +39,73 @@ public class CometSpawner : MonoBehaviour
         }
         else
         {
-            // Allow spawning the next comet
+            DestroyOtherComets(sender.gameObject);
             canSpawnNextComet = true;
-            StartCoroutine(SpawnCometAfterDelay());
+            StartCoroutine(SpawnCometsAfterDelay());
         }
     }
 
-    private void SpawnComet(Vector3 position)
+    private void SpawnComets(Vector3 position, int count)
     {
-        GameObject comet = Instantiate(cometPrefab, position, Quaternion.identity);
+        for (int i = 0; i < count; i++)
+        {
+            GameObject comet = Instantiate(cometPrefab, position, Quaternion.identity);
+            activeComets.Add(comet);
+        }
     }
 
-    private IEnumerator SpawnCometAfterDelay()
+    private IEnumerator SpawnCometsAfterDelay()
     {
-        // Wait for 1 second
         yield return new WaitForSeconds(1f);
-        
-        // Spawn the next comet
         canSpawnNextComet = true;
-        SpawnCometAtReferencePoint();
+        SpawnCometsRandomly();
     }
 
-    private void SpawnCometAtReferencePoint()
+    private void SpawnCometsRandomly()
     {
-        if (canSpawnNextComet)
+        if (canSpawnNextComet && spawnPoints.Count >= numberOfComets)
         {
             canSpawnNextComet = false;
-            Transform referencePoint = Random.Range(0, 2) == 0 ? leftReferencePoint : rightReferencePoint;
-            SpawnComet(referencePoint.position);
+            HashSet<int> selectedIndices = new HashSet<int>();
+
+            while (selectedIndices.Count < numberOfComets)
+            {
+                int randomIndex = Random.Range(0, spawnPoints.Count);
+                if (selectedIndices.Add(randomIndex)) // Returns false if the item was already in the set
+                {
+                    Transform selectedPoint = spawnPoints[randomIndex];
+                    SpawnComets(selectedPoint.position, 1);
+                }
+            }
         }
+    }
+
+    private void DestroyOtherComets(GameObject cometToExclude)
+    {
+        foreach (var comet in activeComets)
+        {
+            if (comet != null && comet != cometToExclude)
+            {
+                Destroy(comet);
+            }
+        }
+        activeComets.Clear();
     }
     
     private void OnDrawGizmos()
     {
-        // Draw initial spawn point location
+        // Draw initial and random spawn points location
+        Gizmos.color = Color.red;
         if (initialSpawnPoint != null) {
-            Gizmos.color = Color.red;
             Gizmos.DrawSphere(initialSpawnPoint.position, 0.1f);
         }
         
-        // Draw left and right reference points in the editor
         Gizmos.color = Color.blue;
-        if (leftReferencePoint != null) {
-            Gizmos.DrawSphere(leftReferencePoint.position, 0.1f);
-        }
-        if (rightReferencePoint != null) {
-            Gizmos.DrawSphere(rightReferencePoint.position, 0.1f);
+        foreach (var point in spawnPoints)
+        {
+            if (point != null) {
+                Gizmos.DrawSphere(point.position, 0.1f);
+            }
         }
     }
 }

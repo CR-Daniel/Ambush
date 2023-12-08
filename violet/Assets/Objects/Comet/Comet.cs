@@ -45,7 +45,7 @@ public class Comet : MonoBehaviour
             }
 
             Destroy(gameObject, lifespan);
-            onCometHitRacket.Raise();
+            onCometHitRacket.Raise(this, null);
         }
     }
 
