@@ -80,6 +80,8 @@ MonoBehaviour:
   startPoint: {fileID: 3464757263043299300}
   endPoint: {fileID: 4724879604004200492}
   enemyPrefabs: []
+  minSpawnInterval: 4
+  maxSpawnInterval: 6
 --- !u!1 &7965662211842263135
 GameObject:
   m_ObjectHideFlags: 0

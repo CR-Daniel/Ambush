@@ -18,7 +18,9 @@ public class EnemySpawner : MonoBehaviour
 
     public List<EnemyPrefab> enemyPrefabs;
     private List<GameObject> enemyPool;
-    private const float spawnInterval = 1.5f;
+
+    [SerializeField] private float minSpawnInterval = 2.0f;
+    [SerializeField] private float maxSpawnInterval = 4.0f;
 
     private void Awake()
     {
@@ -66,6 +68,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             SpawnEnemy();
+            float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(spawnInterval);
         }
     }
