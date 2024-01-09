@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &1962518579561010728
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &2044073524603768339
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &3812435835068162562
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &6249117711694711925
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &6896283774342413208
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
 --- !u!1 &7232128788195921052
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +667,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437944235537630133}
-  m_Mesh: {fileID: -475522871495666655, guid: f292bc69cd08ccb4cb1728ef707d5d12, type: 3}
+  m_Mesh: {fileID: -475522871495666655, guid: 0007e4c10dfa21a4e93cd61bbf246db0, type: 3}
 --- !u!23 &8950938000205619808
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -801,3 +807,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _racketStringFollowerPrefab: {fileID: 6725884136273644248, guid: ded98c7c68ac56546883ae5c42b75ac1, type: 3}
+  isLeftRacket: 0
