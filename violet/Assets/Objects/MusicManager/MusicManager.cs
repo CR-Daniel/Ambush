@@ -88,20 +88,6 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    void OnDestroy()
-    {
-        GameManager.OnGameStateChange -= HandleGameStateChange;
-
-        // Disable the input actions and remove listeners
-        rightPrimaryButton.action.Disable();
-        leftSecondaryButton.action.Disable();
-        leftPrimaryButton.action.Disable();
-
-        rightPrimaryButton.action.performed -= _ => SkipTrack();
-        leftSecondaryButton.action.performed -= _ => AdjustVolume(volumeChangeStep);
-        leftPrimaryButton.action.performed -= _ => AdjustVolume(-volumeChangeStep);
-    }
-
     void Start()
     {
         PlayRandomTrack();
