@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760adb3a7c53b954791a5d2756b63754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onCometHitEnemy: {fileID: 11400000, guid: b5b470262816c4c4e80c70748c20ca30, type: 2}
+  scoreValue: 1
 --- !u!65 &5076699289324782175
 BoxCollider:
   m_ObjectHideFlags: 0

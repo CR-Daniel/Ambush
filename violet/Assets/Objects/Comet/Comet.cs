@@ -7,7 +7,6 @@ using UnityEngine.XR;
 public class Comet : MonoBehaviour
 {
     public GameEvent onCometHitRacket;
-    public GameEvent onCometHitEnemy;
     public GameObject vfxPrefab;
     public AudioClip hitRacketSound;
     public AudioClip hitEnemySound;
@@ -61,8 +60,6 @@ public class Comet : MonoBehaviour
             SendHapticFeedback(XRNode.RightHand, 0.3f, 0.3f);
             SendHapticFeedback(XRNode.LeftHand, 0.3f, 0.3f);
 
-            onCometHitEnemy.Raise();
-
             PlaySoundEffect(hitEnemySound, 0.75f);
             GetComponent<Collider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
@@ -87,7 +84,7 @@ public class Comet : MonoBehaviour
             Vector3 averageVelocity = racketFollower.GetAverageVelocity();
 
             Rigidbody cometRigidbody = GetComponent<Rigidbody>();
-            cometRigidbody.velocity = averageVelocity * 2.0f; 
+            cometRigidbody.velocity = averageVelocity * 2.5f; 
         }
     }
 

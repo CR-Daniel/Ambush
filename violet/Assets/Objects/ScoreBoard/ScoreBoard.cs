@@ -71,10 +71,10 @@ public class ScoreBoard : MonoBehaviour
         OnSpeedAdjustment?.Invoke(newSpeed);
     }
 
-    public void HandleCometHitEnemy()
+    public void HandleCometHitEnemy(Component sender, object data)
     {
         hitTimestamps.Enqueue(Time.time);
-        currentScore++;
+        currentScore += (int)data;
         scoreText.text = currentScore.ToString();
 
         // Check and update high score
