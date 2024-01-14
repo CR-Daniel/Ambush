@@ -45,15 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skyboxMaterials:
-  - {fileID: 2100000, guid: 314bc536dd960574ead031a605dc4608, type: 2}
-  - {fileID: 2100000, guid: e9ae57c38e640d642b7093291add5321, type: 2}
-  - {fileID: 2100000, guid: c9bec476aeb32594981cae7bdb9a3b28, type: 2}
-  - {fileID: 2100000, guid: 1b513f45f8332ec43831cf8029023ad3, type: 2}
-  - {fileID: 2100000, guid: b12d620b36b289245bd45762ae51661b, type: 2}
-  - {fileID: 2100000, guid: 3e0d27a5774136c42bd2ca458464dd00, type: 2}
-  - {fileID: 2100000, guid: 12523ea8ce541e24a8c7ee65ecfb2eeb, type: 2}
-  - {fileID: 2100000, guid: 4d27310e83b8c5044bc9c2a31e55e261, type: 2}
-  - {fileID: 2100000, guid: aa45d7fbd7423724f8657caf515fada4, type: 2}
-  - {fileID: 2100000, guid: aa553d846e40b4341824654216947167, type: 2}
-  - {fileID: 2100000, guid: 2ebb012eb7122c24b9b1d219de6c0a7f, type: 2}
   - {fileID: 2100000, guid: d47ea2ffd0860f846b6e04140e83648a, type: 2}
+  - {fileID: 2100000, guid: 4d27310e83b8c5044bc9c2a31e55e261, type: 2}
+  - {fileID: 2100000, guid: 12523ea8ce541e24a8c7ee65ecfb2eeb, type: 2}
+  - {fileID: 2100000, guid: b12d620b36b289245bd45762ae51661b, type: 2}

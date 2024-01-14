@@ -12,17 +12,20 @@ public class SkyboxLoader : MonoBehaviour
     {
         if (state == GameState.LoadSkybox)
         {
-            LoadRandomSkybox();
+            LoadSkybox();
             GameManager.Instance.UpdateGameState(GameState.Start);
         }
     }
 
-    private void LoadRandomSkybox()
+    private void LoadSkybox()
     {
         if (skyboxMaterials.Length > 0)
         {
-            int randomIndex = Random.Range(0, skyboxMaterials.Length);
-            RenderSettings.skybox = skyboxMaterials[randomIndex];
+            int highScore = PlayerPrefs.GetInt("HighScore", 0);
+            if      (highScore > 30) { RenderSettings.skybox = skyboxMaterials[3]; }
+            else if (highScore > 20) { RenderSettings.skybox = skyboxMaterials[2]; }
+            else if (highScore > 10) { RenderSettings.skybox = skyboxMaterials[1]; }
+            else                     { RenderSettings.skybox = skyboxMaterials[0]; }
             DynamicGI.UpdateEnvironment();
         }
         else
