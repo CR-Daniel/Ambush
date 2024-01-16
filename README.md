@@ -1,4 +1,6 @@
-# Ambush
+# Space Tennis 100
+
+![Alt text](demo.gif)
 
 ## Hit Event Sequence Diagram
 
