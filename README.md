@@ -2,7 +2,7 @@
 
 ![Alt text](demo.gif)
 
-## Hit Event Sequence Diagram
+## Sequence Diagrams
 
 ```mermaid
 sequenceDiagram
@@ -25,7 +25,7 @@ sequenceDiagram
     ScoreBoard->>ScoreBoard: Increment score
 ```
 
-## Enemy Interaction Sequence Diagram
+---
 
 ```mermaid
 sequenceDiagram
@@ -60,7 +60,7 @@ sequenceDiagram
     end
 ```
 
-## Game Flow Sequence Diagram
+---
 
 ```mermaid
 sequenceDiagram
@@ -68,11 +68,8 @@ sequenceDiagram
     participant SkyboxLoader
     participant Blackout
     participant MusicManager
-    participant CometSpawner
-    participant ScoreBoard
-    participant SpaceshipSpawner
 
-    title: Game Flow Sequence Diagram
+    title: Game Initialization Sequence Diagram
 
     GameManager->>GameManager: Start Game<br/>Set State: LoadSkybox
 
@@ -88,6 +85,20 @@ sequenceDiagram
     GameManager->>MusicManager: Notify: Game State Changed
     Blackout->>Blackout: Fade In View
     MusicManager->>MusicManager: Fade In Music
+```
+
+---
+
+```mermaid
+sequenceDiagram
+    participant GameManager
+    participant CometSpawner
+    participant ScoreBoard
+    participant SpaceshipSpawner
+    participant Blackout
+    participant MusicManager
+
+    title: Game Play and End Sequence Diagram
 
     CometSpawner->>CometSpawner: Listen for CometHitRacket Event
     CometSpawner->>GameManager: Set State: Play (On First Comet Hit)
