@@ -1,6 +1,4 @@
-# Space Tennis 100
-
-![Alt text](demo.gif)
+https://github.com/daniel-chou-rainho/Space-Tennis-100/assets/83027725/22a5886b-5ccf-431a-b585-4ef630e59c68
 
 ## Sequence Diagrams
 
